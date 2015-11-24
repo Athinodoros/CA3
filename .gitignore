@@ -82,4 +82,4 @@ build/*
 !nimbus-jose-jwt-3.0.jar
 !nimbus-jose-jwt-3.9.1.jar
 !nimbus-jose-jwt-3.9.jar
-!jars/
+!jars/*
