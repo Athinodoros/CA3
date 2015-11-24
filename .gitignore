@@ -84,4 +84,3 @@ build/*
 !nimbus-jose-jwt-3.9.jar
 !jars/*
 /dist/
-/nbproject/private/
