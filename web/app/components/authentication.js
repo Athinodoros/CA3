@@ -74,7 +74,7 @@ angular.module('myApp.security', [])
     $scope.isAdmin = false;
     $scope.isUser = false;
     delete $window.sessionStorage.token;
-    $location.path("#/view1");
+    $location.path("#/viewHome");
   };
 
   //This sets the login data from session store if user pressed F5 (You are still logged in)
