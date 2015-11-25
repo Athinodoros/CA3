@@ -96,8 +96,7 @@ angular.module('myApp.security', [])
             return {
                 enableLoader: true
             };
-        })
-        .
+        }).
   factory('authInterceptor', function ($rootScope, $q, $window, DisableAuthInterceptor) {
     return {
       request: function (config) {

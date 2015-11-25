@@ -15,13 +15,25 @@ angular.module('myApp.viewCreateUser', ['ngRoute'])
                 $scope.insertNewUser = function () {
                     $http({
                         method: 'GET',
-                        url: 'api/add/'+$scope.username.trim()+'/'+ $scope.password.trim() + '/'+$scope.role.trim() 
+                        url: 'api/add/' + $scope.username.trim() + '/' + $scope.password.trim() + '/' + $scope.role.trim()
                     }).then(function successCallback(response) {
                         $scope.answer = response;
                     }), function errorCallback(response) {
-                        $scope.answer = response ;
+                        $scope.answer = response;
                     };
                 };
+
+                $http({
+                    method: 'GET',
+                    url: 'someurl',
+                    headers: {
+                        
+                    }
+                }
+                ).then(function (res){
+                    $scope.ddd = "all good"  ;
+                });
+
                 this.msgFromFactory = InfoFactory.getInfo();
                 this.msgFromService = InfoService.getInfo();
             }]);

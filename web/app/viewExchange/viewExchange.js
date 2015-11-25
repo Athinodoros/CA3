@@ -10,16 +10,42 @@ angular.module('myApp.viewExchange', ['ngRoute'])
                 });
             }])
 
-        .controller('ViewExchangeCtrl', ["InfoFactory", "InfoService", "$http", "$scope", function (InfoFactory, InfoService, $http, $scope) {
+        .controller('ViewExchangeCtrl', function (InfoFactory, InfoService, $http, $scope, DisableAuthInterceptor) {
+            $scope.exInfo = function () {
+                DisableAuthInterceptor.enableLoader = false;
+//                $http({
+//                    method: 'GET',
+//                    url: 'api/add',
+//                    headers: {
+//                        'X-API-TOKEN': undefined
+//                    }
+//                }
+//                ).then(function successCallback(response) {
+//                        $scope.data = response.data.message;
+//                        DisableAuthInterceptor.enableLoader = true;
+//
+//                    }), function errorCallback(response) {
+//                        $scope.error = response.status + ": " + response.data.statusText;
+//                        DisableAuthInterceptor.enableLoader = true;
+//                  };
+
                 $http({
                     method: 'GET',
-                    url: 'api/demouser'
+                    url: 'api/add'
                 }).then(function successCallback(response) {
-                    $scope.data = response.data.message;
+                   
+                    $scope.data = response.data;
+
+                    DisableAuthInterceptor.enableLoader = true;
+
                 }), function errorCallback(response) {
                     $scope.error = response.status + ": " + response.data.statusText;
-                };
+                    DisableAuthInterceptor.enableLoader = true;
 
-                $scope.msgFromFactory = InfoFactory.getInfo();
-                $scope.msgFromService = InfoService.getInfo();
-            }]);
+                };
+            };
+
+
+            $scope.msgFromFactory = InfoFactory.getInfo();
+            $scope.msgFromService = InfoService.getInfo();
+        });
