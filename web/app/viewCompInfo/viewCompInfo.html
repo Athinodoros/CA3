@@ -1,4 +1,68 @@
 <p>This is the partial for view 2.</p>
 <div>
-  <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+</div>
+
+<div class="panel panel-default documentation">
+    <div class="panel-heading">
+        <h3 class="panel-title">Find Company Information</h3>
+    </div>
+    <div class="panel-body">
+
+        <form class="form-horizontal">
+            <div class="form-horizontal">
+                <fieldset>
+                    <div class="form-group"> 
+                        <label class="control-label col-sm-2">Search text</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="cvr" class="form-control" ng-model="searchInput" placeholder="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group" id="searchOption"> 
+                        <label class="control-label col-sm-2">Options</label>
+                        <div class="col-sm-6">
+                            <select id="searchOption" class="form-control" ng-model="searchOption">
+                                <option value="empty">Search</option>
+                                <option value="vat">CVR</option>
+                                <option value="name">Name</option>
+                                <option value="phone">Phone Number</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="country"> 
+                        <label class="control-label col-sm-2">Country</label>
+                        <div class="col-sm-6">
+                            <select id="country" class="form-control" ng-model="searchCountry">
+                                <option value="denmark">DK</option>
+                                <option value="norway">NO</option>
+                            </select>
+                        </div>
+                    </div> 
+                    <input type="button" value="Find" class="btn btn-primary" ng-click="save()"/>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <h1 style="">{{company.name}}</h1>
+    <br>
+    <p>CVR-number: {{company.vat}}</p>
+    <p>Address: {{company.address}}</p>
+    <p>Zip+city: {{company.zipcode}} {{company.city}}</p>
+    <p>Start date: {{company.startdate}}</p>
+</div>
+
+<div>
+    <uib-accordion>
+        <uib-accordion-group heading="{{out.name}}" ng-repeat="out in company.productionunits">
+            {{out.name}}
+            {{out.address}}
+            {{out.zipcode}}
+            {{out.city}}
+            {{out.phone}}
+            {{out.email}}
+        </uib-accordion-group>
+    </uib-accordion>
+
 </div>
