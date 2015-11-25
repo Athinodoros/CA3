@@ -15,7 +15,8 @@ angular.module('myApp', [
     'myApp.filters',
     'myApp.directives',
     'myApp.factories',
-    'myApp.services'
+    'myApp.services',
+    'myApp.viewCreateUser'
 ]).
         config(['$routeProvider', function ($routeProvider) {
                 $routeProvider.otherwise({redirectTo: '/viewHome'});
