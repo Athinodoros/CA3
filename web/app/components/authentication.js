@@ -92,14 +92,20 @@ angular.module('myApp.security', [])
   };
 // and fire it after definition
   init();
-}).
-  factory('authInterceptor', function ($rootScope, $q, $window) {
+}).factory('DisableAuthInterceptor', function() {
+            return {
+                enableLoader: true
+            };
+        })
+        .
+  factory('authInterceptor', function ($rootScope, $q, $window, DisableAuthInterceptor) {
     return {
       request: function (config) {
+          if(DisableAuthInterceptor.enableLoader) {
         config.headers = config.headers || {};
         if ($window.sessionStorage.token) {
           config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-        }
+        }}
         $rootScope.error = "";
         return config;
       },
