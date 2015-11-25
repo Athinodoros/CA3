@@ -11,13 +11,16 @@ angular.module('myApp.viewCreateUser', ['ngRoute'])
             }])
 
         .controller('viewCreateUserCtrl', ["InfoFactory", "InfoService", "$scope", "$http", function (InfoFactory, InfoService, $scope, $http) {
-                $http({
-                    method: 'GET',
-                    url: 'api/demouser'
-                }).then(function successCallback(response) {
-                    $scope.data = response.data.message;
-                }), function errorCallback(response) {
-                    $scope.error = response.status + ": " + response.data.statusText;
+                $scope.answer = '';
+                $scope.insertNewUser = function () {
+                    $http({
+                        method: 'GET',
+                        url: 'api/add/'+$scope.username.trim()+'/'+ $scope.password.trim() + '/'+$scope.role.trim() 
+                    }).then(function successCallback(response) {
+                        $scope.answer = response;
+                    }), function errorCallback(response) {
+                        $scope.answer = response ;
+                    };
                 };
                 this.msgFromFactory = InfoFactory.getInfo();
                 this.msgFromService = InfoService.getInfo();

@@ -1,4 +1,28 @@
 <div>
-    TESTING FROM VIEW CREATE USER...
-    <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+    <div>
+        <label>User Name</label> <input type="text" placeholder="UserName" ng-model="username" /><br/>
+        <label>Password</label> <input type="text" placeholder="Password" ng-model="password" /><br/>
+        <label>Role</label> 
+        <select ng-model="role" >
+            <option>
+                Admin
+            </option>
+                
+            <option>
+                User
+            </option>
+                
+        </select>
+        
+        <br/>
+        <button ng-click="insertNewUser()" >
+            Add user
+        </button>
+        <br/>
+    </div>
+    
+    {{username}}
+    {{password}}
+    {{role}}
+    {{answer.text}}
 </div>
