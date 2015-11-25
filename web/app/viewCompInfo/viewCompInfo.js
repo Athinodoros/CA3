@@ -10,14 +10,6 @@ angular.module('myApp.viewCompInfo', ['ngRoute'])
             }])
 
         .controller('viewCompInfoCtrl', function ($http, $scope) {
-            $http({
-                method: 'GET',
-                url: 'api/demouser'
-            }).then(function successCallback(res) {
-                $scope.data = res.data.message;
-            }, function errorCallback(res) {
-                $scope.error = res.status + ": " + res.data.statusText;
-            });
 
             $scope.cvrapi = function () {
                 $http.get('http://cvrapi.dk/api?search=' + $scope.searchInput + '&country=' + $scope.searchCountry)
