@@ -1,3 +1,5 @@
+//'use strict';
+
 angular.module('myApp.viewCreateUser', ['ngRoute'])
 
         .config(['$routeProvider', function ($routeProvider) {
@@ -8,7 +10,15 @@ angular.module('myApp.viewCreateUser', ['ngRoute'])
                 });
             }])
 
-        .controller('viewCreateUserCtrl', ["InfoFactory", "InfoService", function (InfoFactory, InfoService) {
+        .controller('viewCreateUserCtrl', ["InfoFactory", "InfoService", "$scope", "$http", function (InfoFactory, InfoService, $scope, $http) {
+                $http({
+                    method: 'GET',
+                    url: 'api/demouser'
+                }).then(function successCallback(response) {
+                    $scope.data = response.data.message;
+                }), function errorCallback(response) {
+                    $scope.error = response.status + ": " + response.data.statusText;
+                };
                 this.msgFromFactory = InfoFactory.getInfo();
                 this.msgFromService = InfoService.getInfo();
             }]);

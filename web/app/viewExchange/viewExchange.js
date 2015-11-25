@@ -10,17 +10,16 @@ angular.module('myApp.viewExchange', ['ngRoute'])
                 });
             }])
 
-        .controller('ViewExchangeCtrl', ["InfoFactory", "InfoService", "$http", function (InfoFactory, InfoService, $http) {
-                this.data = "";
-                        $http({
+        .controller('ViewExchangeCtrl', ["InfoFactory", "InfoService", "$http", "$scope", function (InfoFactory, InfoService, $http, $scope) {
+                $http({
                     method: 'GET',
                     url: 'api/demouser'
                 }).then(function successCallback(response) {
-                    this.data = response.data.message;
+                    $scope.data = response.data.message;
                 }), function errorCallback(response) {
-                    this.error = response.status + ": " + response.data.statusText;
+                    $scope.error = response.status + ": " + response.data.statusText;
                 };
-                
-                this.msgFromFactory = InfoFactory.getInfo();
-                this.msgFromService = InfoService.getInfo();
+
+                $scope.msgFromFactory = InfoFactory.getInfo();
+                $scope.msgFromService = InfoService.getInfo();
             }]);

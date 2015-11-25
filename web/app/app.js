@@ -8,6 +8,7 @@ angular.module('myApp', [
     'myApp.security',
     'myApp.viewHome',
     'myApp.viewAllUsers',
+    'myApp.viewCreateUser',
     'myApp.viewCompInfo',
     'myApp.viewDocumentation',
     'myApp.viewExchange',
@@ -15,8 +16,7 @@ angular.module('myApp', [
     'myApp.filters',
     'myApp.directives',
     'myApp.factories',
-    'myApp.services',
-    'myApp.viewCreateUser'
+    'myApp.services'
 ]).
         config(['$routeProvider', function ($routeProvider) {
                 $routeProvider.otherwise({redirectTo: '/viewHome'});
