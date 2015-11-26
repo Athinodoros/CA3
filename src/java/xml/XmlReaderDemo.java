@@ -33,24 +33,25 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
 // System.out.println("}");
         Currency c = new Currency();
         for (int i = 0; i < attributes.getLength(); i++) {
-            
-                
-                if (attributes.getQName(i).equals("code")) {
-                    c.setCode(attributes.getValue(i));
-                } else if (attributes.getQName(i).equals("desc")) {
-                    c.setDesc(attributes.getValue(i));
-                } else if (attributes.getQName(i).equals("rate")) {
-                    try {
-                        c.setRate(Double.valueOf(attributes.getValue(i)));
-                    } catch (Exception e) {
-                       c.setRate(0.00);
-                    }
-                }else{
-                    
+
+            if (attributes.getQName(i).equals("code")) {
+                c.setCode(attributes.getValue(i));
+            } else if (attributes.getQName(i).equals("desc")) {
+                c.setDesc(attributes.getValue(i));
+            } else if (attributes.getQName(i).matches("rate")) {
+                try {
+                    c.setRate(Double.valueOf(attributes.getValue(i)));
+                } catch (Exception e) {
+                    c.setRate(0.00);
                 }
-           
+            } else {
+
+            }
+
+            if (c.getCode()!= null) {
                 listOfCurrency.add(c);
-            
+            }
+
         }
     }
 
