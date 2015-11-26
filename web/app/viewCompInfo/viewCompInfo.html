@@ -3,7 +3,7 @@
     <p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
 </div>
 
-<div class="panel panel-default documentation">
+<div class="panel panel-primary documentation" style="width: 30%">
     <div class="panel-heading">
         <h3 class="panel-title">Find Company Information</h3>
     </div>
@@ -37,24 +37,25 @@
     <h1 style="">{{company.name}}</h1>
     <br>
     <p><strong>CVR-number:</strong> {{company.vat}}</p>
-    <p><strong>Address:</strong> {{company.address}}</p>
-    <p><strong>Zip+city:</strong> {{company.zipcode}} {{company.city}}</p>
+    <p><strong>Address:   </strong> {{company.address}}</p>
+    <p><strong>Zip+city:  </strong> {{company.zipcode}} {{company.city}}</p>
     <p><strong>Start date:</strong> {{company.startdate}}</p>
+    <p><strong>Employees: </strong> {{company.employees}}</p>
 </div>
 
 <div>
     <uib-accordion>
         <uib-accordion-group heading="{{out.name}}" ng-repeat="out in company.productionunits">
             <br>
-           Address:   {{out.address}}
-           <br>
-           Zip code:  {{out.zipcode}}
-           <br>
-           City:      {{out.city}}
-           <br>
-           Phone:     {{out.phone}}
-           <br>
-           Email:     {{out.email}}
+            Address:   {{out.address}}
+            <br>
+            Zip code:  {{out.zipcode}}
+            <br>
+            City:      {{out.city}}
+            <br>
+            Phone:     {{out.phone}}
+            <br>
+            Email:     {{out.email}}
         </uib-accordion-group>
     </uib-accordion>
 

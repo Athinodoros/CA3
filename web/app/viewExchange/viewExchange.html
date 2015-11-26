@@ -1,3 +1,22 @@
-<p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>
+<!--<p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>-->
 
-<input type="button"  ng-click="exInfo()" name="paok" />
+<input type="button"  ng-click="exInfo()" name="paok" value="get Rates"/>
+
+<div class="col-md-9">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>code</td>
+                <td>Description</td>
+                <td>rate</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rate in data">
+                <td>{{rate.code}}</td>
+                <td>{{rate.desc}}</td>
+                <td>{{rate.rate}}</td>      
+            </tr>
+        </tbody>
+    </table>
+</div>
