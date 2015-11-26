@@ -7,8 +7,6 @@ package entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -21,33 +19,33 @@ import javax.persistence.Table;
 public class Currency implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    String code;
-    String desc;
+    String currencyCode;
+    String description;
     double rate;
 
     public Currency() {
     }
 
     public Currency(String code, String desc, int rate) {
-        this.code = code;
-        this.desc = desc;
+        this.currencyCode = code;
+        this.description = desc;
         this.rate = rate;
     }
 
-    public String getCode() {
-        return code;
+    public String getCurrencyCode() {
+        return currencyCode;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCurrencyCode(String currencyCode) {
+        this.currencyCode = currencyCode;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public double getRate() {
@@ -57,6 +55,4 @@ public class Currency implements Serializable {
     public void setRate(double rate) {
         this.rate = rate;
     }
-    
-    
 }
