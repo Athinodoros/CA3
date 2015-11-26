@@ -11,7 +11,7 @@ angular.module('myApp.viewExchange', ['ngRoute'])
             }])
 
         .controller('ViewExchangeCtrl', function (InfoFactory, InfoService, $http, $scope, DisableAuthInterceptor) {
-            function exInfo() {
+            $scope.exInfo = function () {
                 DisableAuthInterceptor.enableLoader = false;
 //                $http({
 //                    method: 'GET',
@@ -28,33 +28,24 @@ angular.module('myApp.viewExchange', ['ngRoute'])
 //                        $scope.error = response.status + ": " + response.data.statusText;
 //                        DisableAuthInterceptor.enableLoader = true;
 //                  };
+
                 $http({
                     method: 'GET',
                     url: 'api/add'
                 }).then(function successCallback(response) {
+                   
                     $scope.data = response.data;
+
                     DisableAuthInterceptor.enableLoader = true;
+
                 }), function errorCallback(response) {
                     $scope.error = response.status + ": " + response.data.statusText;
                     DisableAuthInterceptor.enableLoader = true;
+
                 };
-            }
-
-            exInfo();
-
-            $scope.convert = function () {
-                return $scope.converter.result = ($scope.converter.from * $scope.converter.amount) / $scope.converter.to;
             };
 
-//            $scope.insertNewUser = function () {
-//                $http({
-//                    method: 'GET',
-//                    url: 'api/add/' + $scope.converter.amount + '/' + $scope.converter.from + '/' + $scope.converter.to
-//                }).then(function successCallback(response) {
-//                    $scope.converter.result = response;
-//                }), function errorCallback(response) {
-//                    $scope.converter.result = response;
-//                };
-//            };
 
+            $scope.msgFromFactory = InfoFactory.getInfo();
+            $scope.msgFromService = InfoService.getInfo();
         });
