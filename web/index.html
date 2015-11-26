@@ -6,11 +6,19 @@
         <title>My AngularJS App</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">   
         <link rel="stylesheet" href="app/app.css">   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <!-- In production use:
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
         -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="app/bower_components/angular/angular.js"></script>
         <script src="app/bower_components/angular-route/angular-route.js"></script>
         <script src='app/bower_components/angular-animate/angular-animate.min.js'></script>
@@ -31,7 +39,7 @@
     </head>
     <body ng-app="myApp">
         <div class="container"  >
-            <nav class="navbar navbar-fixed-top " role="navigation" ng-controller="AppLoginCtrl">
+            <nav class="navbar" role="navigation" ng-controller="AppLoginCtrl">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -46,30 +54,18 @@
                         <ul class="nav navbar-nav">
                             <li><a href="#/viewHome">Home</a></li>
                             <li><a href="#/viewDocumentation">Documentation</a></li> <!-- add view href!!!!!!!-->
+<<<<<<< Updated upstream
                             <li><a href="#/viewCompInfo" >Company Info</a></li>
                             <li><a href="#/viewExchange">Exchange Rate Info</a></li>
                             <li><a href="#/viewAllUsers" >All Users</a></li>
+=======
+                            <li><a href="#/viewCompInfo" ng-show="isUser">Company Info</a></li>
+                            <li><a href="#/viewExchange" ng-show="isUser">Exchange Rate Info</a></li>
+                            <li><a href="#/viewAllUsers" ng-show="isAdmin">All Users</a></li>
+>>>>>>> Stashed changes
                             <li><a href="#/viewLoginSection">Login Section</a></li>
                             <li><a href="#/viewCreateUser">Create User</a></li>
                         </ul>
-                        <div>
-                            <form class="navbar-form navbar-right" role="form" ng-show="!isAuthenticated" ng-submit="login()"  >
-                                <div class="form-group">
-                                    <input type="text" style="width:10em;" placeholder="User name" class="form-control"
-                                           ng-model="user.username">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" style="width:10em;" placeholder="Password" class="form-control"
-                                           ng-model="user.password">
-                                </div>
-                                <button type="submit" class="btn btn-success">Sign in</button>
-                            </form>
-                            <div class="navbar-right" ng-show="isAuthenticated">
-                                <p class="navbar-text">Logged on as: {{username}}</p>
-                                <button type="submit" class="btn btn-primary navbar-btn"  ng-click="logout()">Logout
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </nav>
