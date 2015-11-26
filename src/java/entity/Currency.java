@@ -6,8 +6,12 @@
 package entity;
 
 import java.io.Serializable;
+import java.sql.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +26,17 @@ public class Currency implements Serializable {
     String currencyCode;
     String description;
     double rate;
+
+    
+    Date date ;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Currency() {
     }

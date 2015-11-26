@@ -17,7 +17,6 @@ import javax.persistence.Persistence;
 public class Test {
     public static void main(String[] args) {
         Persistence.generateSchema("PU-Local", null);
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU-Local");
-    
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PU-Local");
     }
 }
