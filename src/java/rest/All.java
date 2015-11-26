@@ -27,6 +27,7 @@ import java.io.IOException;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 import java.net.URL;
+import xml.XmlReaderDemo;
 
 @Path("add")
 public class All {
@@ -60,36 +61,13 @@ public class All {
     }
 
     @GET
-    public String getXml() throws NoSuchAlgorithmException, InvalidKeySpecException, MalformedURLException, ProtocolException, IOException {
+    public String getXml() throws NoSuchAlgorithmException, InvalidKeySpecException, MalformedURLException, ProtocolException, IOException, Exception {
 
-        String url = "http://www.nationalbanken.dk/_vti_bin/DN/DataService.svc/CurrencyRatesXML?lang=da";
-
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-        // optional default is GET
-        con.setRequestMethod("GET");
-
-        //add request header
-        con.setRequestProperty("User-Agent", USER_AGENT);
-
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
+        
         Gson g = new Gson();
         
         //print result
-        return response.toString();
+        return g.toJson(new XmlReaderDemo().call());
     }
 
    
