@@ -1,8 +1,14 @@
 <!--<p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>-->
 
-<input type="button"  ng-click="exInfo()" name="paok" value="get Rates"/>
-
+<!-- Button trigger modal -->
+<div class="col-md-12">    
+    <button type="button" ng-show="!isAuthenticated" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Currency Converter
+    </button>
+</div>
+<!--Exchange rates table-->
 <div class="col-md-9">
+    <!--<input type="button"  ng-click="exInfo()" name="paok" value="get Rates"/>-->
     <table class="table">
         <thead>
             <tr>
@@ -19,4 +25,34 @@
             </tr>
         </tbody>
     </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cool Currency Converter</h4>
+            </div>
+            <div class="modal-body">
+                <form class="navbar-form">
+                    <select ng-change="convert()" ng-model="converter.from">
+                        <option ng-repeat="obj1 in data" value="{{obj1.rate}}">{{obj1.description}}</option>
+                    </select>
+                    <select ng-change="convert()" ng-model="converter.to">
+                        <option ng-repeat="obj2 in data" value="{{obj2.rate}}">{{obj2.description}}</option>
+                    </select>
+                    <div class="form-group">
+                        <input type="number" placeholder="Amount" class="form-control" ng-model="converter.amount" ng-change="convert()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control" >{{converter.result}}</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
