@@ -58,7 +58,7 @@
                             <li><a href="#/viewExchange" ng-show="isUser">Exchange Rate Info</a></li>
                             <li><a href="#/viewAllUsers" ng-show="isAdmin">All Users</a></li>
                             <!--<li><a href="#/viewLoginSection">Login Section</a></li>-->
-                            <li><a href="#/viewCreateUser">Create User</a></li>
+                            <li><a href="#/viewCreateUser" ng-show="!isAuthenticated">Create User</a></li>
                         </ul>
                         <div class="col-md-4">
                             <!-- Button trigger modal -->
