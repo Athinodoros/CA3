@@ -39,7 +39,7 @@
     </head>
     <body ng-app="myApp">
         <div class="container"  >
-            <nav class="navbar" role="navigation" ng-controller="AppLoginCtrl">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="AppLoginCtrl">
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -57,19 +57,61 @@
                             <li><a href="#/viewCompInfo" ng-show="isUser">Company Info</a></li>
                             <li><a href="#/viewExchange" ng-show="isUser">Exchange Rate Info</a></li>
                             <li><a href="#/viewAllUsers" ng-show="isAdmin">All Users</a></li>
-                            <li><a href="#/viewLoginSection">Login Section</a></li>
+                            <!--<li><a href="#/viewLoginSection">Login Section</a></li>-->
                             <li><a href="#/viewCreateUser">Create User</a></li>
                         </ul>
+                        <div class="col-md-4">
+                            <!-- Button trigger modal -->
+                            <button type="button" ng-show="!isAuthenticated" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                Log in to site!
+                            </button>
+                            <button type="button" ng-show="isAuthenticated" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                Log out!
+                            </button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Provide your username and password.</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="navbar-form" role="form" ng-show="!isAuthenticated">
+                                            <div class="form-group">
+                                                <input type="text" style="width:10em;" placeholder="User name" class="form-control"
+                                                       ng-model="user.username">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" style="width:10em;" placeholder="Password" class="form-control"
+                                                       ng-model="user.password">
+                                            </div>
+                                            <button type="button" ng-click="login()" data-dismiss="modal" class="btn btn-success">Sign in</button>
+                                        </form>
+                                        <div class="navbar-form" ng-show="isAuthenticated">
+                                            <p class="navbar-text">Logged on as: {{username}}</p>
+                                            <button type="button" class="btn btn-primary navbar-btn"  data-dismiss="modal" ng-click="logout()">Logout
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </nav>
             <div class="container">
                 <div style="margin-top: 60px;">
-                    <hr style="background: lightblue; border:0; height:7px" />
+                    <hr style="background: lightblue; border:0; height:15px" />
                     <div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
                     <div ng-view></div>
                 </div>
             </div>
         </div>
+
     </body>
 </html>

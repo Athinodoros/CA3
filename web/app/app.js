@@ -12,7 +12,7 @@ angular.module('myApp', [
     'myApp.viewCompInfo',
     'myApp.viewDocumentation',
     'myApp.viewExchange',
-    'myApp.viewLoginSection',
+//    'myApp.viewLoginSection',
     'myApp.filters',
     'myApp.directives',
     'myApp.factories',
