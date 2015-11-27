@@ -84,20 +84,7 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
 
             listOfCurrency.add(c);
         }
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory(deploy.DeploymentConfiguration.PU_NAME);
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            em.getTransaction().begin();
-//            for (Currency listOfCurrency1 : listOfCurrency) {
-//                em.persist(listOfCurrency1);
-//            }
-//        } catch (Exception e) {
-//        } finally {
-//            em.getTransaction().commit();
-//            em.close();
-//            emf.close();
-//        }
-
+        
     }
 
     public static void main(String[] args) throws Exception {
@@ -126,6 +113,27 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
         } catch (SAXException | IOException e) {
             e.printStackTrace();
         }
+        System.out.println("XXX1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(deploy.DeploymentConfiguration.PU_NAME);
+        System.out.println("hfkjsdfhkjs");
+        EntityManager em = emf.createEntityManager();
+        System.out.println("XXX2");
+        
+        try {
+            em.getTransaction().begin();
+//            System.out.println("XXX3");
+            for (Currency listOfCurrency1 : listOfCurrency) {
+                em.persist(listOfCurrency1);
+            }
+        } catch (Exception e) {
+        } finally {
+//            System.out.println("XXX4");
+            em.getTransaction().commit();
+            em.close();
+            emf.close();
+//            System.out.println("XXX5");
+        }
+
         return reader.listOfCurrency;
     }
 
