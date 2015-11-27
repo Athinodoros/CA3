@@ -1,34 +1,33 @@
 <!--<p>Data from server (Users ONLY) <b style="color: darkblue">{{data}}</b></p>-->
 
 <!-- Button trigger modal -->
-<div class="col-md-12">    
+<div class="col-md-12" style="margin-bottom: 10px;">    
     <button type="button" ng-show="!isAuthenticated" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Currency Converter
     </button>
 </div>
+<div class="box1">
+    <input type="search" ng-model="filter" placeholder="Filter currencies">
+</div>
 <!--Exchange rates table-->
 <div class="col-md-9">
     <!--<input type="button"  ng-click="exInfo()" name="paok" value="get Rates"/>-->
-    <table class="table">
+    <table class="table table-striped" style="width: 60%">
         <thead>
             <tr>
-                <td>code</td>
-                <td>Description</td>
-                <td>rate</td>
+                <td><strong>code</strong></td>
+                <td><strong>Description</strong></td>
+                <td><strong>rate</strong></td>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="rate in data">
+            <tr ng-repeat="rate in data | filter: filter">
                 <td>{{rate.currencyCode}}</td>
                 <td>{{rate.description}}</td>
-                <td>{{rate.rate}}</td>      
+                <td>{{rate.rate| number:2}}</td>      
             </tr>
         </tbody>
     </table>
-    <script>
-        
-    </script>
-    ==={{converter}}====
 </div>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
