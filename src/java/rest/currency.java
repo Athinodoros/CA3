@@ -6,8 +6,15 @@
 package rest;
 
 import com.google.gson.Gson;
+import entity.Currency;
+import entity.DateEntity;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.PathParam;
@@ -15,7 +22,6 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -58,8 +64,31 @@ public class currency {
      * @param content representation for the resource
      * @return an HTTP response with content of the updated or created resource.
      */
-    @PUT
+    @GET
+    @Path("dailyrates")
     @Consumes("application/json")
-    public void putJson(String content) {
+    public String getDailyRates(String content) {
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(deploy.DeploymentConfiguration.PU_NAME);
+        EntityManager em = emf.createEntityManager();
+        
+        List<DateEntity> liDates =   em.createQuery("select u from DateEntity u").getResultList();
+        //int id = da.getId();
+        DateEntity lastDate = new DateEntity();
+        lastDate.setId(-1);
+        for (DateEntity singleDate : liDates) {
+            if (lastDate.getId() < singleDate.getId()) {
+                lastDate.setId(singleDate.getId());
+            }
+        }
+        List<Currency> listOfAllRates =  em.createQuery("Select c from Currency c", Currency.class).getResultList();
+        List<Currency> todaysCurrencyList = new ArrayList<>();
+        for (Currency rate : listOfAllRates) {
+            if (rate.getDate().getId() == lastDate.getId()) {
+                todaysCurrencyList.add(rate);
+            }
+        }
+        
+        return g.toJson(todaysCurrencyList);
     }
 }

@@ -57,6 +57,7 @@ public class All
     @GET
     public String getXml() throws NoSuchAlgorithmException, InvalidKeySpecException, MalformedURLException, ProtocolException, IOException, Exception
     {
+        
         return g.toJson(new XmlReaderDemo().call());
     }
 

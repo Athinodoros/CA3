@@ -17,7 +17,7 @@ import javax.persistence.Persistence;
 
 public class XmlReaderDemo extends DefaultHandler implements Callable<List<Currency>> {
 
-    private DateEntity de;
+    private DateEntity de = new DateEntity();;
     private ArrayList<Currency> listOfCurrency = new ArrayList<>();
 
     @Override
@@ -40,20 +40,9 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
         Currency c = new Currency();
 
         if (attributes.getQName(0).equals("id")) {
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory(deploy.DeploymentConfiguration.PU_NAME);
-            EntityManager em = emf.createEntityManager();
-            de = new DateEntity();
-            de.setDate(Date.valueOf(attributes.getValue(0)));
 
-            try {
-                em.getTransaction().begin();
-                em.persist(de);
-                em.getTransaction().commit();
-            } catch (Exception e) {
-            } finally {
-                em.close();
-                emf.close();
-            }
+            
+            de.setDate(Date.valueOf(attributes.getValue(0)));
             c.setCurrencyCode(attributes.getValue(0));
         }
         if (attributes.getQName(0).equals("code")) {
@@ -82,15 +71,17 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
         if (c.getDescription() != null) {
             c.setDate(de);
 
-            listOfCurrency.add(c);
+            this.listOfCurrency.add(c);
         }
-        
+
     }
 
     public static void main(String[] args) throws Exception {
         XmlReaderDemo x = new XmlReaderDemo();
         Gson g = new Gson();
-        System.out.println(g.toJson(x.call()));
+        System.out.println(deploy.DeploymentConfiguration.PU_NAME);
+       System.out.println(g.toJson(x.call()));
+        
     }
 
     public ArrayList<Currency> getListOfCurrency() {
@@ -113,25 +104,20 @@ public class XmlReaderDemo extends DefaultHandler implements Callable<List<Curre
         } catch (SAXException | IOException e) {
             e.printStackTrace();
         }
-        System.out.println("XXX1");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(deploy.DeploymentConfiguration.PU_NAME);
-        System.out.println("hfkjsdfhkjs");
         EntityManager em = emf.createEntityManager();
-        System.out.println("XXX2");
-        
+        System.out.println(reader.listOfCurrency.get(0));
         try {
             em.getTransaction().begin();
-//            System.out.println("XXX3");
-            for (Currency listOfCurrency1 : listOfCurrency) {
-                em.persist(listOfCurrency1);
+            em.persist(reader.de);
+            for (Currency item : reader.listOfCurrency) {
+                em.persist(item);
             }
+            em.getTransaction().commit();
         } catch (Exception e) {
         } finally {
-//            System.out.println("XXX4");
-            em.getTransaction().commit();
             em.close();
             emf.close();
-//            System.out.println("XXX5");
         }
 
         return reader.listOfCurrency;
