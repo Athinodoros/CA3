@@ -6,7 +6,7 @@
     counter-reset: li-counter;
 }
 ol.list > li{
-    position: relative;
+    /*position: relative;*/
     margin-bottom: 10px;
     padding-left: 0.5em;
     min-height: 1.5em;
@@ -14,7 +14,8 @@ ol.list > li{
 }
 
 ol.list > li:before {
-    position: absolute;
+    
+    /*position: absolute;*/
     top: 0;
     left: -1em;
     width: 0.8em;

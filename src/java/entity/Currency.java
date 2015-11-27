@@ -28,7 +28,7 @@ public class Currency implements Serializable {
     String description;
     double rate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     DateEntity date ;
 
     public DateEntity getDate() {
@@ -44,7 +44,7 @@ public class Currency implements Serializable {
     public Currency() {
     }
 
-    public Currency(String code, String desc, int rate) {
+    public Currency(String code, String desc, double rate) {
         this.currencyCode = code;
         this.description = desc;
         this.rate = rate;

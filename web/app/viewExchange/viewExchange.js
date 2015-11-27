@@ -30,7 +30,7 @@ angular.module('myApp.viewExchange', ['ngRoute'])
 //                  };
                 $http({
                     method: 'GET',
-                    url: 'api/add'
+                    url: 'api/currency/dailyrates'
                 }).then(function successCallback(response) {
                     $scope.data = response.data;
                     DisableAuthInterceptor.enableLoader = true;

@@ -23,7 +23,7 @@ public class PeriodicTask implements ServletContextListener{
     public void contextInitialized(ServletContextEvent event) {
         try {
             scheduler = Executors.newSingleThreadScheduledExecutor();
-            scheduler.scheduleAtFixedRate((Runnable) new XmlReaderDemo().call(), 0, 15, TimeUnit.SECONDS);  
+            scheduler.scheduleAtFixedRate((Runnable) new XmlReaderDemo().call(), 0, 60, TimeUnit.SECONDS);  
                                                                                     ////change to 24 hours
         } catch (Exception ex) {
             Logger.getLogger(PeriodicTask.class.getName()).log(Level.SEVERE, null, ex);

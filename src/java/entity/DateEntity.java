@@ -7,7 +7,9 @@ package entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,8 +29,12 @@ public class DateEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    Date date;
-
+    //SimpleDateFormat dateFormat =new SimpleDateFormat("yyyy-MM-dd");
+    
+    
+    Date date ;
+    
+    
     public Date getDate() {
         return date;
     }
@@ -37,23 +43,23 @@ public class DateEntity implements Serializable {
         this.date = date;
     }
     
-    @OneToMany (cascade = CascadeType.ALL)
-    private List<Currency> currency  = new  ArrayList<Currency>();
+//    @OneToMany (cascade = CascadeType.ALL)
+//    private List<Currency> currency  = new  ArrayList<Currency>();
 
-    public List<Currency> getCurrency() {
-        return currency;
-    }
-    public boolean addToTheList(Currency cur) {
-       int i1 = currency.size();
-        currency.add(cur);
-       int i2 = currency.size();
-       
-       return i1<i2;
-    }
-
-    public void setCurrency(ArrayList<Currency> currency) {
-        this.currency = currency;
-    }
+//    public List<Currency> getCurrency() {
+//        return currency;
+//    }
+//    public boolean addToTheList(Currency cur) {
+//       int i1 = currency.size();
+//        currency.add(cur);
+//       int i2 = currency.size();
+//       
+//       return i1<i2;
+//    }
+//
+//    public void setCurrency(ArrayList<Currency> currency) {
+//        this.currency = currency;
+//    }
 
     public DateEntity() {
     }

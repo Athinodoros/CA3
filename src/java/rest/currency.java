@@ -85,7 +85,8 @@ public class currency {
         List<Currency> todaysCurrencyList = new ArrayList<>();
         for (Currency rate : listOfAllRates) {
             if (rate.getDate().getId() == lastDate.getId()) {
-                todaysCurrencyList.add(rate);
+                Currency cur = new Currency(rate.getCurrencyCode(), rate.getDescription(), rate.getRate());
+                todaysCurrencyList.add(cur);
             }
         }
         
