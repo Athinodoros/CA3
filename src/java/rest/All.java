@@ -60,17 +60,6 @@ public class All
         return g.toJson(new XmlReaderDemo().call());
     }
 
-//    @GET
-//    @Path("{amount}/{fromCurrency}/{toCurrency}")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String convert(@PathParam("amount") double amount,
-//            @PathParam("fromCurrency") double from,
-//            @PathParam("toCurrency") double to) throws NoSuchAlgorithmException, InvalidKeySpecException
-//    {
-//        double result = (from*amount)/to;
-//        JsonObject json = new JsonObject();
-//        json.addProperty("result", result);
-//        return g.toJson(result);
-//    }
+    
 
 }

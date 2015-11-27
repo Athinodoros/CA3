@@ -23,17 +23,7 @@ angular.module('myApp.viewCreateUser', ['ngRoute'])
                     };
                 };
 
-                $http({
-                    method: 'GET',
-                    url: 'someurl',
-                    headers: {
-                        
-                    }
-                }
-                ).then(function (res){
-                    $scope.ddd = "all good"  ;
-                });
-
+              
                 this.msgFromFactory = InfoFactory.getInfo();
                 this.msgFromService = InfoService.getInfo();
             }]);

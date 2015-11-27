@@ -46,15 +46,17 @@ angular.module('myApp.viewExchange', ['ngRoute'])
                 return $scope.converter.result = ($scope.converter.from * $scope.converter.amount) / $scope.converter.to;
             };
 
-//            $scope.insertNewUser = function () {
-//                $http({
-//                    method: 'GET',
-//                    url: 'api/add/' + $scope.converter.amount + '/' + $scope.converter.from + '/' + $scope.converter.to
-//                }).then(function successCallback(response) {
-//                    $scope.converter.result = response;
-//                }), function errorCallback(response) {
-//                    $scope.converter.result = response;
-//                };
-//            };
+
+            function getCalc() {
+                $http({
+                    method: 'GET',
+                    url: 'api/currency/' + $scope.converter.amount + '/' + $scope.converter.from + '/' + $scope.converter.to
+                }).then(function successCallback(response) {
+                    $scope.converter = response.data;
+                }), function errorCallback(response) {
+                    $scope.converter = response;
+                };
+            }
+
 
         });

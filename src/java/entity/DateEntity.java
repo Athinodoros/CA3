@@ -6,6 +6,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -25,6 +26,16 @@ public class DateEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
+    Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
     @OneToMany (cascade = CascadeType.ALL)
     private List<Currency> currency  = new  ArrayList<Currency>();
