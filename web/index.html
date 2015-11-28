@@ -90,7 +90,7 @@
                                                 <input type="password" style="width:10em;" placeholder="Password" class="form-control"
                                                        ng-model="user.password">
                                             </div>
-                                            <button type="button" ng-click="login()" data-dismiss="modal" class="btn btn-success">Sign in</button>
+                                            <button type="button" ng-click="login();location.reload();" data-dismiss="modal" class="btn btn-success">Sign in</button>
                                         </form>
                                         <div class="navbar-form" ng-show="isAuthenticated">
                                             <p class="navbar-text">Logged on as: {{username}}</p>

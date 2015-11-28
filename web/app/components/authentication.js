@@ -70,6 +70,7 @@ angular.module('myApp.security', [])
                             $scope.error = data.error;
                             //$scope.logout();  //Clears an eventual error message from timeout on the inner view
                         });
+                        location.reload(); 
             };
 
             $rootScope.logout = function () {
@@ -80,6 +81,7 @@ angular.module('myApp.security', [])
                 $timeout(function () {
                     $location.path("#/viewHome");
                 }, 100);
+                location.reload();
             };
 
             //This sets the login data from session store if user pressed F5 (You are still logged in)
