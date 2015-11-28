@@ -2,7 +2,7 @@
 
 angular.module('myApp.viewHome', ['ngRoute'])
 
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$routeProvider', function ($routeProvider ) {
                 $routeProvider.when('/viewHome', {
                     templateUrl: 'app/viewHome/viewHome.html',
                     controller: 'AppLoginCtrl',

@@ -13,6 +13,17 @@ ol.list > li{
     border-left: 2px solid #CCCCCC;
 }
 
+/*.modal-backdrop{
+    height: 100%;
+bottom: 0;
+}
+.reveal-modal-bg {
+position: fixed;
+}
+.modal-backdrop {
+  z-index: -1;
+}*/
+
 ol.list > li:before {
     
     /*position: absolute;*/
